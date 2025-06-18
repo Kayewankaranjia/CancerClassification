@@ -1,0 +1,67 @@
+# The main job for CancerClassifier.
+resources:
+  jobs:
+
+    CancerClassifier_training_job:
+      name: CancerClassifier_training_job
+
+      # trigger:
+      #   # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
+      #   periodic:
+      #     interval: 1
+      #     unit: DAYS
+
+      # # email_notifications:
+      # #   on_failure:
+      # #     - youremail@gmail.com
+
+      
+           
+      tasks:
+        - task_key: Ingest
+          description: "Ingest data"
+          notebook_task:
+            notebook_path: ../src/ingest.ipynb
+
+        - task_key: Train
+          description: "Train model"
+          notebook_task:
+            notebook_path: ../src/train.ipynb
+          depends_on:
+            - task_key: Ingest
+
+      environments:
+        - environment_key: default
+          spec:
+            client: "1"
+            dependencies:
+              - -r "../src/requirements.txt"
+      
+      
+
+      
+    CancerClassifier_prediction_job:
+        name: CancerClassifier_prediction_job
+
+        # trigger:
+        #   # Run this job every day, exactly one day from the last run; see https://docs.databricks.com/api/workspace/jobs/create#trigger
+        #   periodic:
+        #     interval: 1
+        #     unit: DAYS
+
+        # # email_notifications:
+        # #   on_failure:
+        # #     - youremail@gmail.com
+           
+        tasks:
+           - task_key: Predict
+             description: "Generate predictions"
+             notebook_task:
+               notebook_path: ../src/prediction.ipynb
+        
+        environments:
+           - environment_key: default
+             spec:
+               client: "1"
+               dependencies:
+                 - -r "../src/requirements.txt"

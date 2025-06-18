@@ -1,0 +1,14 @@
+artifact_uri: file:///c:/Work/CancerClassifier/CancerClassifier/src/mlruns/484813650170889067/60cd331e7778432ca30055fb71fed569/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '484813650170889067'
+lifecycle_stage: active
+run_id: 60cd331e7778432ca30055fb71fed569
+run_name: Cancer Classification2025-06-17 20:55:39
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1750190139687
+status: 1
+tags: []
+user_id: kayewan
