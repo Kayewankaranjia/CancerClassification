@@ -1,0 +1,10 @@
+python-dotenv
+pandas
+requests
+kagglehub
+mlflow
+lightgbm
+xgboost==3.0.0
+numpy
+ydata-profiling
+scikit-learn
