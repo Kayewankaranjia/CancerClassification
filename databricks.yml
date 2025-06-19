@@ -27,4 +27,7 @@ targets:
     permissions:
       - user_name: kayewan.karanjia@gmail.com
         level: CAN_MANAGE
+
+    run_as:
+      user_name: kayewan.karanjia@gmail.com
     
